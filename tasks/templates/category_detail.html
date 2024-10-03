@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="products container">
+    <h2>{{ category.name }}</h2>
+        <div class="box-container" id="lista-1">
+        {% for figurine in figurines %}
+            <div class="box">
+                <a href="{% url 'figurine_detail' figurine.pk %}">
+                    {% if figurine.imagen %}
+                        <img class="img" src="{{ figurine.imagen.url }}">
+                    {% else %}
+                        <li class="list-group-item" style="background-color: var(--bs-primary-bg-subtle);">
+                            <p class="px-5">No hay imagen</p>
+                        </li>
+                    {% endif %}
+                    <div class="products-txt">
+                        <h3>{{ figurine.name }}</h3>
+                    {% if figurine.is_sold %}
+                        <p class="card-text">"Vendida"</p>
+                    {% else %}
+                    <p><img src="{% static "img/stock.png" %}" width="95", height="45" alt="Stock"></p>
+                    {% endif %}
+                    <p class="precio">Bo {{ figurine.price }}</p>
+                    <a href="https://wa.me/59173917621?text=Hola,%20me%20interesa%20esta%20figurita:%0A%0ANombre:%20{{ figurine.name }}%0APrecio:%20${{ figurine.price }}%0AImagen:%20http://127.0.0.1:8000{{ figurine.imagen.url }}" class="btn-2">
+                        <img src="{% static 'img/whatsapp.png' %}" width="22" height="22" alt=""> Me interesa
+                    </a>
+                    </div>
+                    
+                </a>
+            </div>
+        {% endfor %}
+        </div>
+
+</main>
+{% endblock %}

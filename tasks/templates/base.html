@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Store love</title>
+    <link rel="stylesheet" href="{% static 'css/style_14.css' %}">
+    <link rel="icon" href="/static/img/favicon.png" type="image/x-png">
+    <script src="{% static 'js/boton_volver.js' %}"></script>
+    <script src="{% static 'js/script.js' %}" defer></script>
+
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+    <div class="menu container">
+        <a href="#" class="logo"><img class="img-logo "src="{% static "img/logo-1.png" %}" width="450", height="200" alt=""></a>
+        <input type="checkbox" id="menu">
+        <label for="menu">
+            <img class="menuIcono" src="{% static 'img/menu.png' %}" alt="imagen del menu">
+        </label> 
+        <nav class="navbar">
+            <ul>
+                <li>
+                    <strong><a href="/">Inicio</a></strong>
+                </li>
+                {% for category in categories %}
+                <li >
+                    <strong><a href="{% url 'category_detail' category.id %}">{{ category.name }}</a></strong>
+                </li>
+                {% endfor %}
+            </ul>
+            
+        </nav>
+        <div>
+            <ul>
+                <li class="subMenu">
+                    <img id=" img-carrito" src="{% static 'img/car.svg' %}" alt="carrito">
+                    <div id="carrito">
+                        <table id="listaCarrito">
+                            <thead>
+                                <tr>
+                                    <th>Imagen</th>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                        <a href="#" class="btn-3" id="vaciar-carrito">Vaciar Carrito</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+    <div class="header-content container">
+        <br/>
+        <div class="header-txt">
+            <br/>
+            <span>BIENVENIDO ฅ≽^•⩊•^≼ฅ</span>
+            <br/>
+            <h1>Explora nuestra tienda en linea</h1>
+            <p>
+                Descubre un mundo lleno de emoción y creatividad con nuestra exclusiva colección de figuritas de anime. En nuestra tienda, ofrecemos una amplia variedad de figuras que abarcan diferentes animes y géneros, desde los clásicos hasta las últimas series populares. Cada figura está diseñada con atención al detalle, perfecta para coleccionistas y amantes del anime. Encuentra tu personaje favorito y dale vida a tu colección. ¡Explora y disfruta de la pasión por el anime con nosotros!
+            </p>
+            <div class="butons">
+                <a href="#" class="btn-1">Informacion</a>
+                <a href="#" class="btn-1">Leer mas..</a>
+            </div>
+        </div>
+        
+        <div class="header-img">
+            <img class="img-oferts" src="{% static 'img/baner2 (2).png' %}" alt="">
+        </div>
+    </div>
+    </header>
+    <section class="oferts container">
+        <div class="oferts-txt">
+            <h1>Ofertas especiales</h1>
+            <p>
+                ¡No te pierdas nuestras increíbles ofertas en figuritas! Esta semana, hemos seleccionado una variedad de figuras de anime a precios económicos, sin comprometer la calidad. Cada figura está cuidadosamente elaborada, perfecta para coleccionistas y fans..
+            </p>
+        </div>
+        
+            {% for figurine in figurines %}
+                {% if figurine.price <= ofertas %}
+                <div class="ofert-1 b1">
+                    <a href="{% url 'figurine_detail' figurine.pk %}">
+                        <div class="ofert-img">
+                            <img src="{{ figurine.imagen.url }}" all="{{ figurine.name }}">
+                        </div>
+                        
+                        <div class="ofert-txt">
+                            <h3>{{ figurine.name }}</h3>
+                            <a class="precio"href="{% url 'figurine_detail' figurine.pk %}">${{ figurine.price }}</a>
+                        </div>
+                    </a>
+                    
+                </div>
+                {% endif %}
+            {% endfor %}
+            <img class="stiker "src="{% static 'img/stiker.png' %}" alt="">
+    </section>
+    <main class="products container">
+        <div class="boton_volver">
+            
+            <button id="botonVolver" class="btn-3" onclick="window.history.back()">Atras</button>
+        </div>
+        <h2>Figuras</h2>
+        <br/>
+        {% block content %} {% endblock %}
+    </main>
+    <footer class="footer">
+        <div class="footer-content coontainer">
+            <div class="link">
+                <h3>Ayuda</h3>
+                <ul>
+                    <li><a href="#">Que es una Pre-venta?</a></li>
+                    <li><a href="#">Devoluciones</a></li>
+                    <li><a href="#">Formas de Pago</a></li>
+                </ul>
+            </div>
+            <div class="link">
+                <h3>Informacion</h3>
+                <ul>
+                    <li><a href="#">Términos y Condiciones de Uso</a></li>
+                    <li><a href="#">Política de Cookies</a></li>
+                    <li><a href="#">Aviso legal</a></li>
+                </ul>
+            </div>
+            <div class="link">
+                <h3>Oficinas</h3>
+                <ul>
+                    <li><a href="#">+591 79201777 / +591 73917621 (SOLO/ONLY WHATSAPP)</a></li>
+                    <li><a href="#">enigmapacman086@gmail.com</a></li>
+                    <li><a href="#">Beni</a></li>
+                    <li><a href="#">Bolivia</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script>
+        
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.ofert-1');
+            let currentIndex = 0;
+        
+            function showCard(index) {
+                cards.forEach((card, i) => {
+                    card.style.display = i === index ? 'block' : 'none';
+                });
+            }
+        
+            function nextCard() {
+                currentIndex = (currentIndex + 1) % cards.length;
+                showCard(currentIndex);
+            }
+        
+            showCard(currentIndex);
+            setInterval(nextCard, 3500); // Cambia cada 3 segundos
+        });
+    </script>
+    
+
+</body>
+</html>

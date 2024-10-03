@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="header-content">
+            <div class="header-img">
+                {% if figurine.imagen %}
+                <img src="{{ figurine.imagen.url }}">
+                {% else %}
+                <p>No hay imagen disponible</p>
+                {% endif %}
+            </div>
+            <div class="header-txt">
+                <h1>{{ figurine.name }}</h1>
+                <p>{{ figurine.description }}</p>
+                <p><strong>Género:</strong> {{ figurine.genre.name }}</p>
+                <p><strong>Estado:</strong> {% if figurine.is_sold %} Vendida {% else %} En Venta {% endif %}</p>
+                <p class="precio"><strong>Precio:</strong> bs {{ figurine.price }}</p>
+                <a href="https://wa.me/59173917621?text=Hola,%20me%20interesa%20esta%20figurita:%0A%0ANombre:%20{{ figurine.name }}%0APrecio:%20${{ figurine.price }}%0AImagen:%20http://127.0.0.1:8000{{ figurine.imagen.url }}" class="btn-2">
+                    <img src="{% static 'img/whatsapp.png' %}" width="22" height="22" alt=""> Me interesa
+                </a>
+            </div>
+</div>
+{% endblock  %}
