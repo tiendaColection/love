@@ -109,7 +109,9 @@
         <h2>Figuras</h2>
         <br/>
         {% block content %} {% endblock %}
+        
     </main>
+
     <footer class="footer">
         <div class="footer-content coontainer">
             <div class="link">
@@ -137,6 +139,9 @@
                     <li><a href="#">Bolivia</a></li>
                 </ul>
             </div>
+        </div>
+        <div>
+            <a href="{% url 'subir_figura' %}">solicitud</a>
         </div>
     </footer>
     <script>

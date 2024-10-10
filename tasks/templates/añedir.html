@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+    <h1>Subir Figura</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ formulario.as_p }}
+        <button type="submit">Subir</button>
+    </form>
+</body>
+{% endblock %}

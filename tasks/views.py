@@ -1,6 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
+from django.http import HttpResponse
 from .models import Category, Figurine
+from .forms import FigurineForm, GenreFrom, CategoryFrom
 
 def index(request):
     ofertas = 120
@@ -22,3 +24,44 @@ def figurine_detail(request, pk):
     figurine = get_object_or_404(Figurine, pk=pk)
     return render(request, 'figurine_detail.html', {'categories': categories, 'figurines': figurines,'figurine': figurine, 'ofertas': ofertas})
 
+def solicitud(request):
+    if request.method == 'POST':
+        password = request.POST.get('password')
+        if password == '1981mayo23':  # Cambia 'tucontraseña' por la contraseña que desees
+            return render(request, 'redirecion.html')
+        else:
+            return HttpResponse("Contraseña incorrecta.")
+    return render (request, 'solicitud.html')
+
+def subir_figura(request):
+    if request.method == 'POST':
+        formulario = FigurineForm(request.POST, request.FILES)
+        if formulario.is_valid():
+                datos = formulario.save(commit=False)
+                datos.save()
+                return redirect('subir_figura')
+    else:
+        formulario = FigurineForm()
+    return render(request, 'añedir.html', {'formulario': formulario,})
+
+def subir_genere(request):
+    if request.method == 'POST':
+        formulario = GenreFrom(request.POST, request.FILES)
+        if formulario.is_valid():
+                datos = formulario.save(commit=False)
+                datos.save()
+                return redirect('subir_genero')
+    else:
+        formulario = GenreFrom()
+    return render(request, 'genero.html', {'formulario': formulario,})
+
+def subir_Categorie(request):
+    if request.method == 'POST':
+        formulario = CategoryFrom(request.POST, request.FILES)
+        if formulario.is_valid():
+                datos = formulario.save(commit=False)
+                datos.save()
+                return redirect('subir_categoria')
+    else:
+        formulario = CategoryFrom()
+    return render(request, 'categoria.html', {'formulario': formulario,})
