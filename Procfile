@@ -1,0 +1,1 @@
+web: storelove.wsgi --log-file -
