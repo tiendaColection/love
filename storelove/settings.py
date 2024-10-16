@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tasks'
+    'tasks',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -75,7 +77,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'storelove.wsgi.application'
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'media',
+    'API_KEY': '276138539343345',
+    'API_SECRET': 'TCrHSHhjembUvttQhk_yU2ezG1o',
+}
 
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -122,6 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 if not DEBUG:
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
@@ -141,4 +150,3 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR,'tasks/static'),)
 
 
 MEDIA_URL= "/media/"
-MEDIA_ROOT= os.path.join(BASE_DIR, "media")
