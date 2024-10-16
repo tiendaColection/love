@@ -78,7 +78,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'storelove.wsgi.application'
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'media',
+    'CLOUD_NAME': 'dj2am2xvx',
     'API_KEY': '276138539343345',
     'API_SECRET': 'TCrHSHhjembUvttQhk_yU2ezG1o',
 }
