@@ -1,1 +1,1 @@
-web: storelove.wsgi --log-file -
+web: gunicorn storelove.wsgi --log-file -
