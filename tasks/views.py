@@ -41,7 +41,7 @@ def subir_figura(request):
                 return redirect('index')
     else:
         formulario = FigurineForm()
-    return render(request, 'añedir.html', {'formulario': formulario,})
+    return render(request, 'aniedir.html', {'formulario': formulario,})
 
 def subir_genere(request):
     if request.method == 'POST':

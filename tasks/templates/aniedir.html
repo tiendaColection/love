@@ -2,7 +2,7 @@
 {% block content %}
 <body>
     <h1>Subir Figura</h1>
-    <form accion ="/subir-figura/" method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ formulario.as_p }}
         <button type="submit">Subir</button>
