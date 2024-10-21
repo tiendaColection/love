@@ -37,9 +37,8 @@ def subir_figura(request):
     if request.method == 'POST':
         formulario = FigurineForm(request.POST, request.FILES)
         if formulario.is_valid():
-                datos = formulario.save(commit=False)
-                datos.save()
-                return redirect('subir_figura')
+                formulario.save()
+                return redirect('index')
     else:
         formulario = FigurineForm()
     return render(request, 'añedir.html', {'formulario': formulario,})
@@ -48,8 +47,7 @@ def subir_genere(request):
     if request.method == 'POST':
         formulario = GenreFrom(request.POST, request.FILES)
         if formulario.is_valid():
-                datos = formulario.save(commit=False)
-                datos.save()
+                formulario.save()
                 return redirect('subir_genero')
     else:
         formulario = GenreFrom()
@@ -59,8 +57,7 @@ def subir_Categorie(request):
     if request.method == 'POST':
         formulario = CategoryFrom(request.POST, request.FILES)
         if formulario.is_valid():
-                datos = formulario.save(commit=False)
-                datos.save()
+                formulario.save()
                 return redirect('subir_categoria')
     else:
         formulario = CategoryFrom()

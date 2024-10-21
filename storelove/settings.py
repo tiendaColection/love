@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+import cloudinary_storage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,8 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tasks',
-    'cloudinary_storage',
     'cloudinary',
+    'cloudinary_storage',
+    
     
 ]
 
@@ -78,13 +80,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'storelove.wsgi.application'
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dj2am2xvx',
-    'API_KEY': '276138539343345',
-    'API_SECRET': 'TCrHSHhjembUvttQhk_yU2ezG1o',
-}
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -145,7 +141,13 @@ if not DEBUG:
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dj2am2xvx',
+    'API_KEY': '276138539343345',
+    'API_SECRET': 'TCrHSHhjembUvttQhk_yU2ezG1o',
+}
 
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR,'tasks/static'),)
 
