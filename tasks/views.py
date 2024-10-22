@@ -28,19 +28,18 @@ def category_detail(request, category_id):
 
 logger = logging.getLogger(__name__)
 
-def figura_detail(request, id):
+def figurine_detail(request, id):
     ofertas = 120
     categories = Category.objects.all()
     figurines = Figurine.objects.all()
     try:
         figurine = get_object_or_404(Figurine, id=id)
-        url_figura = request.build_absolute_uri(figurine.get_absolute_url())
     except Exception as e:
         logger.error(f"Ocurrió un error: {e}")
         # Puedes devolver un mensaje de error a la plantilla
         return render(request, 'error.html', {'error': str(e)})
 
-    return render(request, 'figurine_detail.html', {'categories': categories, 'figurines': figurines,'figurine': figurine, 'ofertas': ofertas,'url_figura': url_figura})
+    return render(request, 'figurine_detail.html', {'categories': categories, 'figurines': figurines,'figurine': figurine, 'ofertas': ofertas})
 
 def solicitud(request):
     if request.method == 'POST':
