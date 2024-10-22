@@ -12,7 +12,7 @@ urlpatterns = [
     path('subir-genero/', views.subir_genere, name='subir_genero'),
     path('subir-categoria/', views.subir_Categorie, name='subir_categoria'),
     
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
 if settings.DEBUG:
     from django.conf.urls.static import static
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
