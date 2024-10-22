@@ -401,6 +401,16 @@ h2{
     .products{
         padding: 0 30px 30px 30px;
     }
+    /*para redusir el tamaño de las letras*/
+    .products-txt h3{
+        font-size:10px;
+        color: #111419;
+        margin-bottom: 3%;
+    }
+    .products-txt p{
+        margin-bottom: 5px;
+        color: #515557;
+    }
     .footer{
         padding: 30px;
     }
