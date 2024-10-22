@@ -22,7 +22,6 @@ class Figurine(models.Model):
     imagen = models.ImageField(upload_to='img/', null=True, blank=True, verbose_name='Imagen')
     price = models.DecimalField(max_digits=10, decimal_places=2)
     is_sold = models.BooleanField(default=False)
-    id_art = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.name
