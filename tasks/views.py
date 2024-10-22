@@ -36,12 +36,19 @@ def solicitud(request):
 def subir_figura(request):
     if request.method == 'POST':
         formulario = FigurineForm(request.POST, request.FILES)
-        if formulario.is_valid():
+        try:
+            if formulario.is_valid():
                 formulario.save()
                 return redirect('index')
+        except Exception as e:
+            # Aquí puedes manejar la excepción, por ejemplo, registrarla o mostrar un mensaje
+            print(f"Ocurrió un error al guardar la figura: {e}")
+            # Puedes agregar un mensaje de error al formulario si es necesario
+            formulario.add_error(None, "Hubo un error al guardar la figura.")
     else:
         formulario = FigurineForm()
-    return render(request, 'aniedir.html', {'formulario': formulario,})
+    
+    return render(request, 'aniedir.html', {'formulario': formulario})
 
 def subir_genere(request):
     if request.method == 'POST':
