@@ -18,28 +18,13 @@ def category_detail(request, category_id):
     figurines = Figurine.objects.filter(category=category)
     return render(request, 'category_detail.html', {'categories': categories,'category': category, 'figurines': figurines, 'ofertas': ofertas})
 
-#def figurine_detail(request, pk):
-    #ofertas = 120
-    #categories = Category.objects.all()
-    #figurines = Figurine.objects.all()
-    #figurine = get_object_or_404(Figurine, pk=pk)
-    #return render(request, 'figurine_detail.html', {'categories': categories, 'figurines': figurines,'figurine': figurine, 'ofertas': ofertas})
-
-
-logger = logging.getLogger(__name__)
-
-def figurine_detail(request, id):
+def figurine_detail(request, pk):
     ofertas = 120
     categories = Category.objects.all()
     figurines = Figurine.objects.all()
-    try:
-        figurine = get_object_or_404(Figurine, id=id)
-    except Exception as e:
-        logger.error(f"Ocurrió un error: {e}")
-        # Puedes devolver un mensaje de error a la plantilla
-        return render(request, 'error.html', {'error': str(e)})
-
+    figurine = get_object_or_404(Figurine, pk=pk)
     return render(request, 'figurine_detail.html', {'categories': categories, 'figurines': figurines,'figurine': figurine, 'ofertas': ofertas})
+
 
 def solicitud(request):
     if request.method == 'POST':
