@@ -22,7 +22,7 @@
                     <p><img  src="{% static "img/stock.png" %}" width="95", height="45" alt="Stock"></p>
                     {% endif %}
                     <p class="precio">Bs {{ figurine.price }}</p>
-                    <a href="https://wa.me/59173917621?text=Hola,%20estoy%20interesado%20en%20{{ figura.nombre }}%20que%20cuesta%20${{ figura.precio }}.%20Aquí%20está%20el%20enlace:%20{{ request.build_absolute_uri(figura.get_absolute_url) }}" class="btn-2">
+                    <a href="https://wa.me/59173917621?text=Hola,%20estoy%20interesado%20en%20{{ figura.nombre }}%20que%20cuesta%20${{ figura.precio }}}}" class="btn-2">
                         <img src="{% static 'img/whatsapp.png' %}" width="22" height="22" alt=""> Me interesa
                     </a>
                     <!--<a href="#" class="agregar-carrito btn-3" data-id="figurine.pk"><img src="{% static "img/car.svg" %}" alt=""> Agregar </a>-->
