@@ -36,7 +36,8 @@ def solicitud(request):
     return render (request, 'solicitud.html')
 
 def eliminar(request):
-    return render(request, 'categoriaDelete.html')
+    categorias = Category.objects.all()
+    return render(request, 'categoriaDelete.html', {'categorias': categorias})
 
 def subir_figura(request):
     if request.method == 'POST':
@@ -79,4 +80,4 @@ def eliminar_categoria(request, pk):
     if request.method == 'POST':
         categoria = get_object_or_404(Category, pk=pk)
         categoria.delete()
-        return redirect('eliminar_categoria')
+        return redirect('eliminar')
