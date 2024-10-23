@@ -35,6 +35,9 @@ def solicitud(request):
             return HttpResponse("Contraseña incorrecta.")
     return render (request, 'solicitud.html')
 
+def eliminar(request):
+    return render(request, 'categoriaDelete.html')
+
 def subir_figura(request):
     if request.method == 'POST':
         formulario = FigurineForm(request.POST, request.FILES)
@@ -71,3 +74,9 @@ def subir_Categorie(request):
     else:
         formulario = CategoryFrom()
     return render(request, 'categoria.html', {'formulario': formulario,})
+
+def eliminar_categoria(request, pk):
+    if request.method == 'POST':
+        categoria = get_object_or_404(Category, pk=pk)
+        categoria.delete()
+        return redirect('nombre_de_tu_vista_de_categorias')

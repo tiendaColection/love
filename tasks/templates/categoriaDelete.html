@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+    {% for categoria in categorias %}
+    <div>
+        <p>{{ categoria.nombre }}</p>
+        <form action="{% url 'eliminar_categoria' categoria.pk %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Eliminar</button>
+        </form>
+    </div>
+    {% endfor %}
+</body>
+{% endblock %}
