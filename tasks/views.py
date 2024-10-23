@@ -79,4 +79,4 @@ def eliminar_categoria(request, pk):
     if request.method == 'POST':
         categoria = get_object_or_404(Category, pk=pk)
         categoria.delete()
-        return redirect('nombre_de_tu_vista_de_categorias')
+        return redirect('eliminar_categoria')
