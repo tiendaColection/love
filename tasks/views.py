@@ -40,8 +40,13 @@ def eliminar(request):
     return render(request, 'categoriaDelete.html', {'categorias': categorias})
 
 def lista_figuras(request):
-    figuras = Figurine.objects.all()
-    return render(request, 'listarfigura.html', {'figuras': figuras})
+    try:
+        figuras = Figurine.objects.all()
+    except Figurine.DoesNotExist:
+        figuras = []
+        print("ocurrio un error a listar las figuras")# Puedes agregar un mensaje de error o manejarlo de otra manera
+        figuras.add_error(None, "Hubo un error al guardar la figura.")
+    return render(request, 'figuras_list.html', {'figuras': figuras})
 
 def subir_figura(request):
     if request.method == 'POST':
