@@ -39,6 +39,10 @@ def eliminar(request):
     categorias = Category.objects.all()
     return render(request, 'categoriaDelete.html', {'categorias': categorias})
 
+def lista_figuras(request):
+    figuras = Figurine.objects.all()
+    return render(request, 'listarfigura.html', {'figuras': figuras})
+
 def subir_figura(request):
     if request.method == 'POST':
         formulario = FigurineForm(request.POST, request.FILES)
@@ -81,3 +85,9 @@ def eliminar_categoria(request, pk):
         categoria = get_object_or_404(Category, pk=pk)
         categoria.delete()
         return redirect('eliminar')
+    
+def eliminar_figura(request, pk):
+    if request.method == 'POST':
+        figura = get_object_or_404(Figurine, pk=pk)
+        figura.delete()
+        return redirect('lista_figuras')
