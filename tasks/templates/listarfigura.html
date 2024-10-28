@@ -17,8 +17,8 @@
             <tbody>
                 {% for figura in figuras %}
                 <tr>
-                    <td>{{ figura.name }}</td>
-                    <td>{{ figura.description }}</td>
+                    <td class="text-dark">{{ figura.name }}</td>
+                    <td class="text-dark">{{ figura.description }}</td>
                     <td>
                         {% if figura.imagen %}
                             <img src="{{ figura.imagen.url }}" height="100" style="border-radius: 10%;">
@@ -26,7 +26,7 @@
                             <p>No hay imagen</p>
                         {% endif %}
                     </td>
-                    <td>{{ figura.price }}</td>
+                    <td class="text-dark">{{ figura.price }}</td>
                     <td>
                         <a href="{% url 'editar_figura' figura.pk %}">Editar</a>
                     </td>
