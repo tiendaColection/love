@@ -8,10 +8,7 @@
             {% csrf_token %}
             <button type="submit">Eliminar</button>
         </form>
-        <form action="{% url 'editar_figura' figura.pk %}" method="post">
-            {% csrf_token %}
-            <button type="submit">editar_figura</button>
-        </form>
+        <a href="{% url 'editar_figura' figura.pk %}">Editar</a>
     </div>
     
 {% endfor %}
