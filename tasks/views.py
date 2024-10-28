@@ -85,6 +85,17 @@ def subir_Categorie(request):
         formulario = CategoryFrom()
     return render(request, 'categoria.html', {'formulario': formulario,})
 
+def editar_figura(request, pk):
+    figura = get_object_or_404(Figurine, pk=pk)
+    if request.method == 'POST':
+        form = FigurineForm(request.POST, request.FILES, instance=figura)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_figuras')  # Redirige a la lista de figuras o a donde prefieras
+    else:
+        form = FigurineForm(instance=figura)
+    return render(request, 'editarFigura.html', {'form': form})
+
 def eliminar_categoria(request, pk):
     if request.method == 'POST':
         categoria = get_object_or_404(Category, pk=pk)

@@ -11,6 +11,7 @@ urlpatterns = [
     path('eliminar/', views.eliminar, name='eliminar'),
     path('eliminar-categoria/<int:pk>/', views.eliminar_categoria, name='eliminar_categoria'),
     path('lista_figuras/', views.lista_figuras, name='lista_figuras'),
+    path('editar-figura/<int:pk>/', views.editar_figura, name='editar_figura'),
     path('eliminar-figura/<int:pk>/', views.eliminar_figura, name='eliminar_figura'),
     path('subir-figura/', views.subir_figura, name='subir_figura'),
     path('subir-genero/', views.subir_genere, name='subir_genero'),
