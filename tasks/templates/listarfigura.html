@@ -1,7 +1,49 @@
 {% extends "base.html" %}
 {% block content %}
 <h2>Lista de Figuras</h2>
-{% for figura in figuras %}
+<div class="card-body">
+    <hr class="my-2">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre Figura</th>
+                    <th scope="col">Descripción de la Figura</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col" colspan="2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for figura in figuras %}
+                <tr>
+                    <td>{{ figura.name }}</td>
+                    <td>{{ figura.description }}</td>
+                    <td>
+                        {% if figura.imagen %}
+                            <img src="{{ figura.imagen.url }}" height="100" style="border-radius: 10%;">
+                        {% else %}
+                            <p>No hay imagen</p>
+                        {% endif %}
+                    </td>
+                    <td>{{ figura.price }}</td>
+                    <td>
+                        <a href="{% url 'editar_figura' figura.pk %}">Editar</a>
+                    </td>
+                    <td>
+                        <form action="{% url 'eliminar_figura' figura.pk %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock  %}
+<!--{% for figura in figuras %}
     <div>
         <p>{{ figura.name }}</p>
         <form action="{% url 'eliminar_figura' figura.pk %}" method="post">
@@ -11,5 +53,4 @@
         <a href="{% url 'editar_figura' figura.pk %}">Editar</a>
     </div>
     
-{% endfor %}
-{% endblock  %}
+{% endfor %}-->
