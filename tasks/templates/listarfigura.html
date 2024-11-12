@@ -17,6 +17,7 @@
             <tbody>
                 {% for figura in figuras %}
                 <tr>
+                    <td class="text-dark">{{ forloop.counter }}</td>  {# Este es el contador #}
                     <td class="text-dark">{{ figura.name }}</td>
                     <td class="text-dark">{{ figura.description }}</td>
                     <td>

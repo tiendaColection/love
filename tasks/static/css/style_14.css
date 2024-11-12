@@ -355,7 +355,8 @@ h2{
 }
 
 .footer .centerp a{
-    justify-items: center;
+    justify-content: center;
+    color: #000000;
 }
 
 .footer-content{
