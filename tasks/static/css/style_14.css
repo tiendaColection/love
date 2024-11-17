@@ -389,7 +389,7 @@ h2{
     color:crimson;
 }
 
-@media (max-width:991px){
+@media (max-width:768px){
     .banner{
         display: block;
     }
