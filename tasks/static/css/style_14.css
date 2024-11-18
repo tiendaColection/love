@@ -23,12 +23,13 @@ body{
     left: 0;
     right: 0;
     background-color:rgba(255, 119, 149, 0.415);
-    color: white;
     text-align: center;
     padding: 10px;
     z-index: 1000;
 }
-
+.banner p{
+    color: white;
+}
 /* Header Top */
 img{
     max-width: 100%;
