@@ -16,20 +16,8 @@ body{
     background-color: #000000;
     padding: auto;
 }
-.banner{
-    display: none;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color:rgba(255, 119, 149, 0.415);
-    text-align: center;
-    padding: 10px;
-    z-index: 1000;
-}
-.banner p{
-    color: white;
-}
+
+
 /* Header Top */
 img{
     max-width: 100%;
@@ -391,9 +379,6 @@ h2{
 }
 
 @media (max-width:991px){
-    .banner{
-        display: block;
-    }
     .menu{
         padding: 20px;
     }
