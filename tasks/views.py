@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from .models import Category, Figurine
 from .forms import FigurineForm, GenreFrom, CategoryFrom
-import logging
 
 def index(request):
     ofertas = 120
