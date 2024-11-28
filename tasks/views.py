@@ -10,7 +10,7 @@ def index(request):
     figurines = Figurine.objects.all()
     return render(request,'index.html', {'categories': categories, 'figurines': figurines, 'ofertas': ofertas})
 
-def indexpoor (request):
+def indexpoor(request):
     ofertas = 120
     categories = Category.objects.all()
     figurines = Figurine.objects.all()
