@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="products container">
+    <div class="box-container" id="lista-1">
+        {% for figurine in figurines %}
+        {% if figurine.price <= oferts %}
+        <div class="box">
+            <a href="{% url 'figurine_detail' figurine.pk %}">
+                {% if figurine.imagen %}
+                    <img class="img" src="{{ figurine.imagen.url }}">
+                {% else %}
+                    <li style="background-color: var(--bs-primary-bg-subtle);">
+                        <p class="px-5">No hay imagen</p>
+                    </li>
+                {% endif %}
+                <div class="products-txt">
+                    <h3>{{ figurine.name }}</h3>
+                    {% if figurine.is_sold %}
+                    <p class="card-text">"Vendida"</p>
+                    {% else %}
+                    <p><img  src="{% static "img/stock.png" %}" width="95" height="45" alt="Stock"></p>
+                    {% endif %}
+                    <p class="precio">Bs {{ figurine.price }}</p>
+                    <p><img src="{% static 'img/info.png' %}" width="120" height="60" alt=""></p>
+                    <!--<a href="#" class="agregar-carrito btn-3" data-id="figurine.pk"><img src="{% static "img/car.svg" %}" alt=""> Agregar </a>-->
+                </div>
+            </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <!--<button class="btn-2" id="load-more" >Cargar más</button>-->
+</main>
+
+{% endfor %}
+
+{% endblock  %}
