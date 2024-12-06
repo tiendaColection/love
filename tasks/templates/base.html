@@ -84,7 +84,7 @@
         </div>
             {% for figurine in figurines %}
                 {% if figurine.price <= ofertas %}
-                <div class="ofert-1 b1">
+                <div class="">
                     <a href="{% url 'indexpoor' %}">
                         <div class="ofert-img">
                             <img src="{{ figurine.imagen.url }}" all="{{ figurine.name }}">
