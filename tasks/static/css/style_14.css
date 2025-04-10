@@ -194,7 +194,7 @@ span{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(255, 165, 219);
+    background-color: rgb(164, 255, 250);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
 }
